@@ -1,0 +1,10 @@
+body {
+
+    font-family: "Architects Daughter", cursive;
+
+  }
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
