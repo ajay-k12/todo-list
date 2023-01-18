@@ -2,30 +2,64 @@ import React, {useState} from "react";
 import Header from "./components/Header";
 import Input from "./components/Input";
 import List from "./components/List";
+import { v4 as uuidv4 } from "uuid"
 
 const App = () => {
 
     const [input, setInput] = useState("");
     const [list, setList] = useState([]);
+    const [toggle, setToggle] = useState(true);
+    const [isEdit, setIsEdit] = useState(null);
 
     const handleChange = (e) => {
-        setInput(e.target.value);
+            setInput(e.target.value);
     }
 
     const handleClick = (e) => {
-        setList((previousValue) => {
-            return [...previousValue, input]
-        })
-        e.preventDefault();
-        setInput("");
+        if(!input)
+        {
+
+        }
+        else if(input && !toggle) 
+        {
+            setList(
+                list.map((item) => {
+                    if(item.id === isEdit){
+                        return {...item, name: input}
+                    }
+                    return item
+                })
+                
+            )
+            setToggle(true)
+            setInput("")
+            setIsEdit(null)
+        } 
+        else 
+        {
+            setList((previousValue) => {
+                return [...previousValue, { id : uuidv4(), name : input }]
+            })
+            e.preventDefault();
+            setInput("");
+        }
     }
 
     const handleDelete = (id) => {
         setList((previousValue) => {
-            return previousValue.filter((item, index) => {
-                return index!==id
+            return previousValue.filter((item) => {
+                return id!==item.id
             })
         })
+    }
+
+    const handleEdit = (id) => {
+        const newItem = list.find((item) => {
+            return item.id===id
+        })
+        setToggle(false)
+        setInput(newItem.name)
+        setIsEdit(id)
     }
 
 
@@ -38,13 +72,16 @@ const App = () => {
                 handleChange={handleChange}
                 handleClick={handleClick}
                 input={input}
+                toggle={toggle}
             />
-            {list.map((item, index) => (
+            { list.map((item) => (
                 <List 
-                item={item} 
-                key={index} 
+                item={item.name} 
+                key={item.id} 
                 handleDelete={handleDelete} 
-                id={index}/>
+                id={item.id}
+                handleEdit={handleEdit}
+                />
             ))}
         </div>
     </div>  
