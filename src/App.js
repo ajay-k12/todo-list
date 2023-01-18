@@ -1,13 +1,24 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Header from "./components/Header";
 import Input from "./components/Input";
 import List from "./components/List";
 import { v4 as uuidv4 } from "uuid"
 
+// to get data from local storage //
+const getLocalItems = () => {
+    let list = localStorage.getItem('lists')
+    if(list){
+        return JSON.parse(localStorage.getItem('lists'))
+    }
+    else{
+        return []
+    }
+}
+
 const App = () => {
 
     const [input, setInput] = useState("");
-    const [list, setList] = useState([]);
+    const [list, setList] = useState(getLocalItems());
     const [toggle, setToggle] = useState(true);
     const [isEdit, setIsEdit] = useState(null);
 
@@ -61,6 +72,11 @@ const App = () => {
         setInput(newItem.name)
         setIsEdit(id)
     }
+
+    // add data to local storage 
+    useEffect(() => {
+        localStorage.setItem('lists', JSON.stringify(list))
+    }, [list])
 
 
     return (
