@@ -2,7 +2,9 @@ import React, {useEffect, useState} from "react";
 import Header from "./components/Header";
 import Input from "./components/Input";
 import List from "./components/List";
-import { v4 as uuidv4 } from "uuid"
+import { v4 as uuidv4 } from "uuid";
+import DarkModeToggle from 'react-dark-mode-toggle';
+import './components/styles.css'
 
 // to get data from local storage //
 const getLocalItems = () => {
@@ -21,6 +23,18 @@ const App = () => {
     const [list, setList] = useState(getLocalItems());
     const [toggle, setToggle] = useState(true);
     const [isEdit, setIsEdit] = useState(null);
+    const [checked, setChecked] = useState( false);
+
+    const toggleButton = () => {
+        if(checked === true){
+            setChecked(false)
+            document.body.className = 'light';
+        }
+        else{
+            setChecked(true)
+            document.body.className = 'dark';
+        }
+    }
 
     const handleChange = (e) => {
             setInput(e.target.value);
@@ -39,6 +53,7 @@ const App = () => {
                         return {...item, name: input}
                     }
                     return item
+                    
                 })
                 
             )
@@ -81,14 +96,20 @@ const App = () => {
 
     return (
     
-    <div className='bg-[#ffeaa7] h-screen p-10'>
-        <div className="m-10 mx-auto max-w-[650px] min-h-[500px] bg-[#f1f5f8] shadow-2xl rounded-xl bg-[url('https://www.transparenttextures.com/patterns/worn-dots.png')]">
-            <Header />
+    <div className= {`p-10 ${checked===false ? 'light' : 'dark'}`}>
+        <div className='toggleButton'>
+            <DarkModeToggle size={50} className='togButton' checked={checked} onChange={toggleButton} speed={3} />
+        </div>
+        <div className={`container no-scrollbar overflow-y-scroll m-10 mx-auto max-w-[650px] min-h-[500px] max-h-[500px] bg-[#f1f5f8] shadow-2xl rounded-xl bg-[url('https://www.transparenttextures.com/patterns/worn-dots.png')] ${checked===false ? 'light' : 'dark'}`}>
+            <Header 
+                checked={checked}
+            />
             <Input 
                 handleChange={handleChange}
                 handleClick={handleClick}
                 input={input}
                 toggle={toggle}
+                checked={checked}
             />
             { list.map((item) => (
                 <List 
@@ -97,6 +118,7 @@ const App = () => {
                 handleDelete={handleDelete} 
                 id={item.id}
                 handleEdit={handleEdit}
+                checked={checked}
                 />
             ))}
         </div>

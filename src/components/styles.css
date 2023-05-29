@@ -1,0 +1,27 @@
+body.dark {
+    margin: 0;
+    background-color:#3e3e3e;
+  }
+
+.header.dark {
+ background-color: #5f5e5e;
+ color: aliceblue;
+}
+
+.btn.dark {
+    background-color: #5f5e5e;
+    color: aliceblue;
+}
+
+.btn.dark:hover {
+    background-color: #252525;
+    color: aliceblue;
+}
+
+.container.dark {
+    background-color: #C0C2C9;
+}
+
+input.dark::placeholder{
+    color: aliceblue;
+}

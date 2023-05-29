@@ -1,8 +1,12 @@
 body {
 
     font-family: "Architects Daughter", cursive;
-
+    background-color: #ffeaa7;
   }
+  
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
 
 
 @tailwind base;
