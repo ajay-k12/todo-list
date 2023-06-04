@@ -25,3 +25,7 @@ body.dark {
 input.dark::placeholder{
     color: aliceblue;
 }
+
+.border-if-input-empty{
+    border: 2px solid red;
+}

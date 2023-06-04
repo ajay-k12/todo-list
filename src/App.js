@@ -23,15 +23,17 @@ const App = () => {
     const [list, setList] = useState(getLocalItems());
     const [toggle, setToggle] = useState(true);
     const [isEdit, setIsEdit] = useState(null);
-    const [checked, setChecked] = useState( false);
+    const [isDarkMode, setIsDarkMode] = useState( false);
+    const [isInputEmpty, setIsInputEmpty] = useState({inputIsEmpty: ''});
+    const [addButtonClicked, setAddButtonClicked] = useState(false);
 
     const toggleButton = () => {
-        if(checked === true){
-            setChecked(false)
+        if(isDarkMode === true){
+            setIsDarkMode(false)
             document.body.className = 'light';
         }
         else{
-            setChecked(true)
+            setIsDarkMode(true)
             document.body.className = 'dark';
         }
     }
@@ -43,28 +45,27 @@ const App = () => {
     const handleClick = (e) => {
         if(!input)
         {
-
+            setAddButtonClicked(true);
+            setIsInputEmpty({inputIsEmpty: 'Please write something'});
         }
-        else if(input && !toggle) 
+        else if(input && !toggle)
         {
-            setList(
-                list.map((item) => {
-                    if(item.id === isEdit){
-                        return {...item, name: input}
-                    }
-                    return item
-                    
-                })
-                
-            )
+            setAddButtonClicked(false);
+            setList(list.map((item) => {
+                if(item.id === isEdit){
+                    return {...item, name: input}
+                }
+                return item
+                }))
             setToggle(true)
             setInput("")
             setIsEdit(null)
-        } 
+        }
         else 
         {
+            setAddButtonClicked(false);
             setList((previousValue) => {
-                return [...previousValue, { id : uuidv4(), name : input }]
+                return [...previousValue, { id : uuidv4(), name : input, isEditing: false }]
             })
             e.preventDefault();
             setInput("");
@@ -96,29 +97,31 @@ const App = () => {
 
     return (
     
-    <div className= {`p-10 ${checked===false ? 'light' : 'dark'}`}>
+    <div className= {`p-10 ${isDarkMode===false ? 'light' : 'dark'}`}>
         <div className='toggleButton'>
-            <DarkModeToggle size={50} className='togButton' checked={checked} onChange={toggleButton} speed={3} />
+            <DarkModeToggle size={50} className='togButton' checked={isDarkMode} onChange={toggleButton} speed={3} />
         </div>
-        <div className={`container no-scrollbar overflow-y-scroll m-10 mx-auto max-w-[650px] min-h-[500px] max-h-[500px] bg-[#f1f5f8] shadow-2xl rounded-xl bg-[url('https://www.transparenttextures.com/patterns/worn-dots.png')] ${checked===false ? 'light' : 'dark'}`}>
+        <div className={`container no-scrollbar overflow-y-scroll m-10 mx-auto max-w-[650px] min-h-[500px] max-h-[500px] bg-[#f1f5f8] shadow-2xl rounded-xl bg-[url('https://www.transparenttextures.com/patterns/worn-dots.png')] ${isDarkMode===false ? 'light' : 'dark'}`}>
             <Header 
-                checked={checked}
+                isDarkMode={isDarkMode}
             />
             <Input 
                 handleChange={handleChange}
                 handleClick={handleClick}
                 input={input}
                 toggle={toggle}
-                checked={checked}
+                isDarkMode={isDarkMode}
+                isInputEmpty={isInputEmpty}
+                addButtonClicked={addButtonClicked}
             />
             { list.map((item) => (
                 <List 
-                item={item.name} 
-                key={item.id} 
-                handleDelete={handleDelete} 
-                id={item.id}
-                handleEdit={handleEdit}
-                checked={checked}
+                    item={item.name} 
+                    key={item.id} 
+                    handleDelete={handleDelete} 
+                    id={item.id}
+                    handleEdit={handleEdit}
+                    isDarkMode={isDarkMode}
                 />
             ))}
         </div>
