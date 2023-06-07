@@ -5,6 +5,7 @@ import List from "./components/List";
 import { v4 as uuidv4 } from "uuid";
 import DarkModeToggle from 'react-dark-mode-toggle';
 import './components/styles.css'
+import ZoomTodo from "./components/zoom-todo/ZoomTodo";
 
 // to get data from local storage //
 const getLocalItems = () => {
@@ -21,11 +22,15 @@ const App = () => {
 
     const [input, setInput] = useState("");
     const [list, setList] = useState(getLocalItems());
-    const [toggle, setToggle] = useState(true);
     const [isEdit, setIsEdit] = useState(null);
     const [isDarkMode, setIsDarkMode] = useState( false);
     const [isInputEmpty, setIsInputEmpty] = useState({inputIsEmpty: ''});
     const [addButtonClicked, setAddButtonClicked] = useState(false);
+    const [zoomTodo, setZoomTodo] = useState(false);
+    const [inputValue, setInputValue] = useState('');
+    const [saveButtonClicked, setSaveButtonClicked] = useState(false);
+    const [isSaveInputEmpty, setIsSaveInputEmpty] = useState({inputIsEmpty: ''});
+
 
     const toggleButton = () => {
         if(isDarkMode === true){
@@ -48,19 +53,6 @@ const App = () => {
             setAddButtonClicked(true);
             setIsInputEmpty({inputIsEmpty: 'Please write something'});
         }
-        else if(input && !toggle)
-        {
-            setAddButtonClicked(false);
-            setList(list.map((item) => {
-                if(item.id === isEdit){
-                    return {...item, name: input}
-                }
-                return item
-                }))
-            setToggle(true)
-            setInput("")
-            setIsEdit(null)
-        }
         else 
         {
             setAddButtonClicked(false);
@@ -81,12 +73,29 @@ const App = () => {
     }
 
     const handleEdit = (id) => {
+        setZoomTodo(true);
         const newItem = list.find((item) => {
             return item.id===id
         })
-        setToggle(false)
-        setInput(newItem.name)
+        setInputValue(newItem.name)
         setIsEdit(id)
+    }
+
+    const handleSave = (id) => {
+        if(!inputValue){
+            setSaveButtonClicked(true)
+            setIsSaveInputEmpty({inputIsEmpty: 'Please write something'});
+        }
+        else {
+            setList(list.map((item) => {
+                if(item.id === id){
+                    return {...item, name: inputValue}
+                }
+                return item
+                }))
+            setSaveButtonClicked(false)
+            setZoomTodo(false)
+        }
     }
 
     // add data to local storage 
@@ -96,36 +105,64 @@ const App = () => {
 
 
     return (
-    
-    <div className= {`p-10 ${isDarkMode===false ? 'light' : 'dark'}`}>
-        <div className='toggleButton'>
-            <DarkModeToggle size={50} className='togButton' checked={isDarkMode} onChange={toggleButton} speed={3} />
-        </div>
-        <div className={`container no-scrollbar overflow-y-scroll m-10 mx-auto max-w-[650px] min-h-[500px] max-h-[500px] bg-[#f1f5f8] shadow-2xl rounded-xl bg-[url('https://www.transparenttextures.com/patterns/worn-dots.png')] ${isDarkMode===false ? 'light' : 'dark'}`}>
-            <Header 
+    <>
+        {zoomTodo && 
+            <ZoomTodo 
+                handleSave={handleSave} 
+                inputValue={inputValue} 
+                setInputValue={setInputValue} 
+                isEdit={isEdit} 
+                saveButtonClicked={saveButtonClicked} 
+                isSaveInputEmpty={isSaveInputEmpty} 
                 isDarkMode={isDarkMode}
             />
-            <Input 
-                handleChange={handleChange}
-                handleClick={handleClick}
-                input={input}
-                toggle={toggle}
-                isDarkMode={isDarkMode}
-                isInputEmpty={isInputEmpty}
-                addButtonClicked={addButtonClicked}
-            />
-            { list.map((item) => (
-                <List 
-                    item={item.name} 
-                    key={item.id} 
-                    handleDelete={handleDelete} 
-                    id={item.id}
-                    handleEdit={handleEdit}
+        }
+        <div className= {`p-10 ${isDarkMode===false ? 'light' : 'dark'}`}>
+            <div className='toggleButton'>
+                <DarkModeToggle 
+                    size={50} 
+                    className='togButton' 
+                    checked={isDarkMode} 
+                    onChange={toggleButton} 
+                    speed={3}
+                />
+            </div>
+            <div className={`
+                    container 
+                    no-scrollbar 
+                    overflow-y-scroll 
+                    m-10 mx-auto 
+                    max-w-[650px] min-h-[500px]
+                    max-h-[500px] bg-[#f1f5f8]
+                    shadow-2xl rounded-xl 
+                    bg-[url('https://www.transparenttextures.com/patterns/worn-dots.png')]
+                    ${isDarkMode===false ? 'light' : 'dark'}`
+                }
+            >
+                <Header 
                     isDarkMode={isDarkMode}
                 />
-            ))}
-        </div>
-    </div>  
+                <Input 
+                    handleChange={handleChange}
+                    handleClick={handleClick}
+                    input={input}
+                    isDarkMode={isDarkMode}
+                    isInputEmpty={isInputEmpty}
+                    addButtonClicked={addButtonClicked}
+                />
+                { list.map((item) => (
+                    <List 
+                        item={item.name} 
+                        key={item.id} 
+                        handleDelete={handleDelete} 
+                        id={item.id}
+                        handleEdit={handleEdit}
+                        isDarkMode={isDarkMode}
+                    />
+                ))}
+            </div>
+        </div> 
+    </> 
     
     )
 }

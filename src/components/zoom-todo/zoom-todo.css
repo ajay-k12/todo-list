@@ -1,0 +1,80 @@
+.zoom-todo {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(227, 205, 133, 0.5);
+    z-index: 1;
+}
+
+.edit-area {
+    height: 90px;
+    width: 350px;
+    border-radius: 5px;
+}
+
+.edit-input {
+    height: 25px;
+    width: 250px;
+    margin: 5px;
+}
+
+.edit-btn {
+    margin-left: 10px;
+    padding: 2px;
+    text-align: center;
+}
+
+
+/* dark theme */
+.zoom-todo.dark{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.edit-input.dark::placeholder{
+    color: aliceblue;
+}
+
+.edit-area.dark {
+    background-color: #C0C2C9;
+}
+
+.edit-btn.dark {
+    background-color: #5f5e5e;
+    color: aliceblue;
+}
+
+.edit-btn.dark:hover {
+    background-color: #252525;
+    color: aliceblue;
+}
+
+.error-message{
+    display: flex;
+    width: 80%;
+    margin: auto;
+}
+
+/* responsive */
+@media screen and (min-width: 640px) {
+    .edit-area {
+        height: 150px;
+        width: 600px;
+        border-radius: 20px;
+    }
+
+    .edit-input {
+        height: 50px;
+        width: 400px;
+        margin: 20px;
+    }
+
+    .edit-btn {
+        margin: 20px;
+        padding: 10px;
+        text-align: center;
+    }
+  }

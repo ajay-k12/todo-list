@@ -10,27 +10,53 @@ const List = ({item, handleDelete, id, handleEdit, isDarkMode}) => {
   }
 
   return (
-    <div className='items-center flex justify-between m-2 pl-2 pr-2'>
+    <div className='items-center 
+        flex justify-between 
+        mb-2 lg:pl-4 lg:pr-4
+        pl-2 pr-2'
+    >
       <div className='w-96'>
-        <li className=' justify-center text-md border-dashed hover:font-bold hover:cursor-pointer hover:text-lg' 
+        <li className='justify-center 
+            lg:text-base text-xs 
+            lg:hover:font-bold 
+            lg:hover:cursor-pointer 
+            lg:hover:text-lg' 
           onClick={lineThrough} 
           style={{textDecoration : check ? 'line-through' : null}}
-        >
-          {item}
+        > 
+        {item} 
         </li>
       </div>
-      <div className='flex gap-5'>
-        <button className={`h-7 btn bg-[#fdcb6e] hover:bg-[#ffa600] text-md font-semibold rotate-1 rounded-tl-md rounded-tr-xl rounded-bl-xl rounded-br-md p-1 ${isDarkMode===false ? 'light' : 'dark'}`}
+      <div className='flex lg:gap-5 gap-2'>
+        <button className={
+            `lg:h-7 h-6 btn 
+            bg-[#fdcb6e]
+            hover:bg-[#ffa600] 
+            lg:text-base text-xs 
+            font-semibold rotate-1 
+            rounded-tl-md rounded-tr-xl 
+            rounded-bl-xl rounded-br-md p-1 
+            ${isDarkMode===false ? 'light' : 'dark'}`
+          }
           type='button' 
           onClick={() => handleEdit(id)}
-        >
-          edit
+        > 
+        edit 
         </button>
-        <button className={` h-7 btn bg-[#fdcb6e] hover:bg-[#ffa600] text-md font-semibold rotate-1 rounded-tl-md rounded-tr-xl rounded-bl-xl rounded-br-md p-1  ${isDarkMode===false ? 'light' : 'dark'}`}
+        <button className={
+            `lg:h-7 h-6 btn 
+            bg-[#fdcb6e] 
+            hover:bg-[#ffa600] 
+            lg:text-base text-xs 
+            font-semibold rotate-1 
+            rounded-tl-md rounded-tr-xl 
+            rounded-bl-xl rounded-br-md p-1 
+            ${isDarkMode===false ? 'light' : 'dark'}`
+          }
           type='button' 
           onClick={() => handleDelete(id)}
-        >
-          delete
+        > 
+        delete 
         </button>
       </div>
     </div>
