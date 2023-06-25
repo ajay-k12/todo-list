@@ -10,7 +10,7 @@ const Header = ({isDarkMode}) => {
         <p className={
             `header 
             ${isDarkMode===false ? 'light' : 'dark'} 
-            bg-[#fdcb6e] p-1 
+            bg-[#ff2e7b] p-1 
             rotate-2 font-bold
             pl-3 pr-3 
             rounded-tl-md 

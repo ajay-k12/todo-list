@@ -1,12 +1,14 @@
 body {
 
   font-family: 'Pangolin', cursive;
-    background-color: rgb(255, 235, 168);
+    background-color:#ffe9ee;
+    background-image: url("https://www.transparenttextures.com/patterns/axiom-pattern.png");
   }
   
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
 
 
 @tailwind base;

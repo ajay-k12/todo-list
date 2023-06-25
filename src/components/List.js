@@ -17,7 +17,7 @@ const List = ({item, handleDelete, id, handleEdit, isDarkMode}) => {
     >
       <div className='w-96'>
         <li className='justify-center 
-            lg:text-base text-xs 
+            lg:text-lg text-xs 
             lg:hover:font-bold 
             lg:hover:cursor-pointer 
             lg:hover:text-lg' 
@@ -30,8 +30,8 @@ const List = ({item, handleDelete, id, handleEdit, isDarkMode}) => {
       <div className='flex lg:gap-5 gap-2'>
         <button className={
             `lg:h-7 h-6 btn 
-            bg-[#fdcb6e]
-            hover:bg-[#ffa600] 
+            bg-[#e87fa6]
+            hover:bg-[#ff2e7b] 
             lg:text-base text-xs 
             font-semibold rotate-1 
             rounded-tl-md rounded-tr-xl 
@@ -45,8 +45,8 @@ const List = ({item, handleDelete, id, handleEdit, isDarkMode}) => {
         </button>
         <button className={
             `lg:h-7 h-6 btn 
-            bg-[#fdcb6e] 
-            hover:bg-[#ffa600] 
+            bg-[#e87fa6] 
+            hover:bg-[#ff2e7b] 
             lg:text-base text-xs 
             font-semibold rotate-1 
             rounded-tl-md rounded-tr-xl 

@@ -6,7 +6,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(227, 205, 133, 0.5);
+    background-color: rgb(242, 190, 209, 0.4);
     z-index: 1;
 }
 
@@ -35,20 +35,20 @@
 }
 
 .edit-input.dark::placeholder{
-    color: aliceblue;
+    color: rgb(34, 48, 60, 0.5);
 }
 
 .edit-area.dark {
-    background-color: #C0C2C9;
+    background-color: #9fb3c8;
 }
 
 .edit-btn.dark {
-    background-color: #5f5e5e;
+    background-color: #334e68;
     color: aliceblue;
 }
 
 .edit-btn.dark:hover {
-    background-color: #252525;
+    background-color: #102a43;
     color: aliceblue;
 }
 

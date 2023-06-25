@@ -15,13 +15,13 @@ const Input = ({handleChange, handleClick, input, isDarkMode, isInputEmpty, addB
       >
         <input className={
             `border-2
-            border-black 
+            border-pink-500
             p-[0.5rem] 
             rounded-br-[15px] 
             rounded-bl-[5px] 
             rounded-tr-[7px] 
             rounded-tl-[9px] 
-            bg-transparent w-[75%] 
+            bg-transparent w-[75%] placeholder-pink-400
             ${isDarkMode===false ? 'light' : 'dark'} 
             ${(!input && addButtonClicked) ? 'border-if-input-empty' : ''}`
           }
@@ -33,8 +33,8 @@ const Input = ({handleChange, handleClick, input, isDarkMode, isInputEmpty, addB
         <div>
           <button className={
             `btn p-1 
-            bg-[#fdcb6e] 
-            hover:bg-[#ffa600] 
+            bg-[#e87fa6] 
+            hover:bg-[#ff2e7b] 
             text-md font-semibold
             -rotate-2 rounded-tl-md 
             rounded-tr-xl 

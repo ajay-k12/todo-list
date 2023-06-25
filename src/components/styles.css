@@ -1,31 +1,52 @@
+input.dark:focus-visible {
+    outline: 1px solid rgb(0, 0, 0);
+}
+
+input:focus-visible {
+    outline: 1px solid rgb(233, 30, 99);
+}
+
 body.dark {
     margin: 0;
-    background-color:#3e3e3e;
-  }
+    background-color: #1f1b24;
+}
 
 .header.dark {
- background-color: #5f5e5e;
+ background-color: #072138;
  color: aliceblue;
 }
 
 .btn.dark {
-    background-color: #5f5e5e;
+    background-color: #334e68;
     color: aliceblue;
 }
 
 .btn.dark:hover {
-    background-color: #252525;
+    background-color: #102a43;
     color: aliceblue;
 }
 
 .container.dark {
-    background-color: #C0C2C9;
+    background-color: #9fb3c8;
 }
 
-input.dark::placeholder{
-    color: aliceblue;
+input.dark{
+    border: 2px solid #072138;
+}
+
+input.dark.border-if-input-empty{
+    border: 2px solid red;
+}
+
+input.dark.border-if-input-empty:focus{
+    outline: none;
 }
 
 .border-if-input-empty{
     border: 2px solid red;
 }
+
+input.dark::placeholder{
+    color: rgb(34, 48, 60, 0.5);
+}
+

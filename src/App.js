@@ -3,9 +3,11 @@ import Header from "./components/Header";
 import Input from "./components/Input";
 import List from "./components/List";
 import { v4 as uuidv4 } from "uuid";
-import DarkModeToggle from 'react-dark-mode-toggle';
-import './components/styles.css'
+// import DarkModeToggle from 'react-dark-mode-toggle';
 import ZoomTodo from "./components/zoom-todo/ZoomTodo";
+import DarkModeToggle from "./components/dark-mode-toggle/DarkModeToggle";
+import './components/styles.css'
+
 
 // to get data from local storage //
 const getLocalItems = () => {
@@ -58,6 +60,7 @@ const App = () => {
             setAddButtonClicked(false);
             setList((previousValue) => {
                 return [...previousValue, { id : uuidv4(), name : input, isEditing: false }]
+                
             })
             e.preventDefault();
             setInput("");
@@ -120,11 +123,9 @@ const App = () => {
         <div className= {`p-10 ${isDarkMode===false ? 'light' : 'dark'}`}>
             <div className='toggleButton'>
                 <DarkModeToggle 
-                    size={50} 
-                    className='togButton' 
-                    checked={isDarkMode} 
+                    className='togButton'
+                    checked={isDarkMode}
                     onChange={toggleButton} 
-                    speed={3}
                 />
             </div>
             <div className={`
@@ -133,9 +134,9 @@ const App = () => {
                     overflow-y-scroll 
                     m-10 mx-auto 
                     max-w-[650px] min-h-[500px]
-                    max-h-[500px] bg-[#f1f5f8]
+                    max-h-[500px] bg-[#ffd8e7]
                     shadow-2xl rounded-xl 
-                    bg-[url('https://www.transparenttextures.com/patterns/worn-dots.png')]
+                    bg-[url("https://www.transparenttextures.com/patterns/axiom-pattern.png")]
                     ${isDarkMode===false ? 'light' : 'dark'}`
                 }
             >

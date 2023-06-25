@@ -27,8 +27,8 @@ const ZoomTodo = ({
           ${isDarkMode===false ? 'light' : 'dark'} 
           items-center 
           justify-center 
-          bg-[#f1f5f8] 
-          bg-[url('https://www.transparenttextures.com/patterns/worn-dots.png')]`
+          bg-[#ffd8e7] 
+          bg-[url("https://www.transparenttextures.com/patterns/axiom-pattern.png")]`
         }
       >
           <div className='
@@ -42,7 +42,8 @@ const ZoomTodo = ({
                 bg-transparent border-2 
                 p-[0.5rem] rounded-br-[15px] 
                 rounded-bl-[5px] rounded-tr-[7px] 
-                rounded-tl-[9px] border-black 
+                rounded-tl-[9px] border-pink-500
+                placeholder-pink-400
                 ${(!inputValue && saveButtonClicked) ? 'border-if-input-empty' : ''}`
               } 
               type='text' 
@@ -54,8 +55,8 @@ const ZoomTodo = ({
                 `edit-btn 
                 ${isDarkMode===false ? 'light' : 'dark'} 
                 text-center 
-                bg-[#fdcb6e] 
-                hover:bg-[#ffa600] 
+                bg-[#e87fa6] 
+                hover:bg-[#ff2e7b] 
                 lg:text-base text-sm 
                 font-semibold rotate-1 
                 rounded-tl-md rounded-tr-xl 
