@@ -2,16 +2,18 @@ This is a self made project.
 
 live demo : https://tiny-croissant-23335c.netlify.app/
 
+Background image : www.transparenttextures.com
 
-https://github.com/ajay-k12/todo-list/assets/108744630/3b4859cf-de54-475e-9523-b1cf53c2fa3c
-
-![todo1](https://github.com/ajay-k12/todo-list/assets/108744630/9e68c298-e4d1-4ec5-b7f1-26fdbcc0d05e)
-
-
-![todo2](https://github.com/ajay-k12/todo-list/assets/108744630/b54fb546-2a02-401a-ac4b-dea597cc0e62)
+https://github.com/ajay-k12/todo-list/assets/108744630/b8784d61-fd95-4aae-8545-c1803c90f215
 
 
-![todo3](https://github.com/ajay-k12/todo-list/assets/108744630/a4b844fc-1842-4c12-b02b-e26066cb68ba)
+
+![todo-light-theme](https://github.com/ajay-k12/todo-list/assets/108744630/b3e79fc0-e42c-4d01-b2e2-861afbb84749)
+
+![todo-dark-theme](https://github.com/ajay-k12/todo-list/assets/108744630/b11349d0-db19-476f-9fa7-575404dd936d)
+
+![todo-responsive](https://github.com/ajay-k12/todo-list/assets/108744630/9bc6cbdb-6634-4507-bd6c-2c8def906c43)
+
 
 # Getting Started with Create React App
 
