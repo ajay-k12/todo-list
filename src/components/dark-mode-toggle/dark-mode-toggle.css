@@ -19,9 +19,9 @@
     right: 0;
     bottom: 0;
     background-image: url('../../../public/images/day.jpg');
-    background-size: contain;
-    -webkit-transition: .1s;
-    transition: .1s;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    transition: 0.3s;
 }
 
 .slider:before {
@@ -34,24 +34,22 @@
     background-image: url('../../../public/images/sun.jpg');
     background-size: 40px 40px;
     background-position: center;
-    -webkit-transition: .4s;
-    transition: .4s;
+    transition: 0.3s;
 }
 
 input:checked + .slider {
     background-image: url('../../../public/images/night.jpg');
-    background-size: contain;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
+
 input:checked + .slider:before {
-    background-image: url('../../../public/images/moon.png');
+    background-image: url('../../../public/images/moon.jpg');
     background-size: 40px 40px;
     background-position: center;
-
-}
+} 
 
 input:checked + .slider:before {
-    -webkit-transform: translate(40px);
-    -ms-transform: translateX(40px);
     transform: translateX(40px);
 }
 
@@ -61,4 +59,4 @@ input:checked + .slider:before {
 
 .slider.round:before {
     border-radius: 50%;
-}
+}  

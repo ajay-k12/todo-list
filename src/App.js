@@ -121,9 +121,8 @@ const App = () => {
             />
         }
         <div className= {`p-10 ${isDarkMode===false ? 'light' : 'dark'}`}>
-            <div className='toggleButton'>
-                <DarkModeToggle 
-                    className='togButton'
+            <div>
+                <DarkModeToggle
                     checked={isDarkMode}
                     onChange={toggleButton} 
                 />
